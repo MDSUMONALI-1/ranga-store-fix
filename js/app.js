@@ -23,7 +23,7 @@ const showProducts = (products) => {
 
       <h2>Price: $ ${product.price}</h2>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-warning">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <button type="button" class="btn btn-info">Details</button>
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -49,12 +49,12 @@ const updatePrice = (id, value) => {
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
   // console.log(total)
-  document.getElementById(id).innerText = Math.abs(total);
+  document.getElementById(id).innerText =parseFloat(total).toFixed(2);
 };
 
 // set innerText function
 const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = Math.abs(value);
+  document.getElementById(id).innerText = parseFloat(value).toFixed(2);
 };
 
 // update delivery charge and total Tax
@@ -73,6 +73,6 @@ const updateTaxAndCharge = () => {
     setInnerText("total-tax", priceConverted * 0.4);
   }
   // console.log(priceConverted)
-    document.getElementById('total').innerText = getInputValue("price") + getInputValue("delivery-charge") +getInputValue("total-tax") ;
+    document.getElementById('total').innerText =parseFloat(getInputValue("price") + getInputValue("delivery-charge") +getInputValue("total-tax")).toFixed(2)  ;
 };
  
